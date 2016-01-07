@@ -25,7 +25,7 @@ public class RepairTechnique {
 
 		String fail=failure.toString(); 
 		
-		
+	
 		
 		int start=fail.indexOf("{"); 
 		int end=fail.indexOf("}"); 
