@@ -25,7 +25,7 @@ public class test3 {
   @Test
   public void testTemp() throws Exception {
 driver.get("http://cse.unl.edu/~mouna/WebApps/AddressBook/addressbookv3.3.4/index.php");
-    driver.findElement(By.cssSelector("html > body > table > tbody > tr:nth-child(2) > td:nth-child(3) > form > table:nth-child(2) > tbody > tr:nth-child(1) > td:nth-child(7) > a > img")).click();
+    driver.findElement(By.cssSelector("img[alt=\"Edit\"]")).click();
     driver.findElement(By.name("firstname")).clear();
     driver.findElement(By.name("firstname")).sendKeys("JamesEDIT");
     driver.findElement(By.name("lastname")).clear();
