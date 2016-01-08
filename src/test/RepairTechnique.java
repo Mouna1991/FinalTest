@@ -51,7 +51,7 @@ public class RepairTechnique {
 		locator=locator2.replace("\\", ""); 
 		
 		
-		System.out.println("LOCATOR==============>"+locator);  
+		//System.out.println("LOCATOR==============>"+locator);  
 		 
 		System.out.println("FAILURE DESCRIPTION: Could not locate the element with locator====> \""+locator+ "\", using the technique"
 				+ "====> \""+ method+"\"");
@@ -209,7 +209,7 @@ public class RepairTechnique {
 			input += line + "\n";
 			
 			if (line.contains(locator2)){
-				System.out.println("LINE=======================>"+line); 
+				System.out.println("STATEMENT WITHIN THE TEST CASE TO BE REPAIRED:"+line); 
 				input=input.replace(locator2, repair); 
 				
 			}

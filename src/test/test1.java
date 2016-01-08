@@ -47,7 +47,7 @@ driver.get("http://cse.unl.edu/~mouna/WebApps/AddressBook/addressbookv3.3.2/inde
     driver.findElement(By.name("phone2")).clear();
     driver.findElement(By.name("phone2")).sendKeys("EDIT");
     driver.findElement(By.name("update")).click();
-    driver.findElement(By.linkText("Home")).click();
+    
   }
 
   @After

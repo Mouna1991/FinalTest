@@ -239,7 +239,31 @@ public class RepairMain {
 				
 				dest=tech.repair(new_file, old_URL, new_URL, failure);
 				
+				
+				System.out.println("******************************************");
 
+				System.out.println("-------------REPAIRING TEST CASE---------");
+				System.out.println("*****************************************");
+				 command = "javac "+new_file;
+
+				 output = executeCommand(command);
+
+//				 try {
+//						act = Class.forName(classname);
+//					} catch (ClassNotFoundException e) {
+//						// TODO Auto-generated catch block
+//						e.printStackTrace();
+//					}
+//				 result2 = JUnitCore.runClasses(act);
+//				 if(result2.wasSuccessful()){
+//						System.out.println("******************************");
+//						System.out.println("Test case was successfully repaired for Version "+counter);
+//						System.out.println("******************************");
+//					}
+//				 else{
+//					 System.out.println("HEYYYY   "+result2.getFailures().get(0).toString());  
+//					 
+//			}
 			}
 			System.out.println(result2.wasSuccessful());
 			if(result2.wasSuccessful()){

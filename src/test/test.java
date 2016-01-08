@@ -47,7 +47,7 @@ public class test {
     driver.findElement(By.name("phone2")).clear();
     driver.findElement(By.name("phone2")).sendKeys("EDIT");
     driver.findElement(By.name("update")).click();
-    driver.findElement(By.linkText("Home")).click();
+    
   }
 
   @After
