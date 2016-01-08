@@ -24,7 +24,7 @@ public class RepairTechnique {
 		
 
 		String fail=failure.toString(); 
-		
+		//System.out.println("FAIIIIIL==============>"+fail);
 	
 		
 		int start=fail.indexOf("{"); 
@@ -45,10 +45,10 @@ public class RepairTechnique {
 		end=locator.indexOf("\"}"); 
 		locator=locator.substring(start, end); 
 		locator=locator.replace(":\"", ""); 
+		locator=locator.replace("\\", ""); 
 		
 		
-		
-		//System.out.println("LOCATOR==============>"+locator);  
+		System.out.println("LOCATOR==============>"+locator);  
 		 
 		System.out.println("FAILURE DESCRIPTION: Could not locate the element with locator====> \""+locator+ "\", using the technique"
 				+ "====> \""+ method+"\"");
@@ -56,10 +56,10 @@ public class RepairTechnique {
 		System.out.println("---------------------------------------------------------------------");
 		
 		org.jsoup.nodes.Document doc = Jsoup.connect(old_URL).get();
-		
+		 Element elem=null; 
+		 Elements cssSelectors =null; 
 		if(method.equals("link text")){
 			   Elements links = doc.getElementsByTag("a");
-			    Element elem=null; 
 			    for (Element link : links) {
 			    	  String linkText = link.text();
 			      if(linkText.equals(locator)){
@@ -68,26 +68,59 @@ public class RepairTechnique {
 			    
 			    
 			    }
+		}	    
+	    else if(method.equals("css selector")){
+	    	 cssSelectors = doc.select(locator); 
+	    	
+	    }
 			   
 	System.out.println("--------------------PROFILE ESTABLISHEMENT FOR UNLOCATED ELEMENT-----------------"); 
-			    
-			    	  String linkHref = elem.attr("href"); // "http://example.com/"
-			     if(linkHref!=""){
-						System.out.println("HREF ATTRIBUTE VALUE: "+linkHref); 
-			    }
+	   //ID ATTRIBUTE
+					elem=cssSelectors.get(0); 
+				    String href = elem.attr("href"); 
+				    if(href!="" && href!=null){
+							System.out.println("HREF ATTRIBUTE VALUE: "+href); 
+				   }
 			     
 			     //ID ATTRIBUTE
 			     String id = elem.attr("id"); 
-			     if(id!=""){
+			     if(id!="" && id!=null){
 						System.out.println("ID ATTRIBUTE VALUE: "+id); 
 			    }
 			     //NAME ATTRIBUTE
 			     String name = elem.attr("name"); 
-			     if(name!=""){
+			     if(name!="" && name!=null){
 						System.out.println("NAME ATTRIBUTE VALUE: "+name); 
 			    }
+			     String source = elem.attr("src"); 
+			     if(source!="" && source!=null){
+						System.out.println("SOURCE ATTRIBUTE VALUE: "+source); 
+			    }
+			     String border = elem.attr("border"); 
+			     if(border!="" && border!=null){
+						System.out.println("BORDER ATTRIBUTE VALUE: "+border); 
+			    }
 			     
-		}
+			     String width = elem.attr("width"); 
+			     if(width!="" && width!=null){
+						System.out.println("WIDTH ATTRIBUTE VALUE: "+width); 
+			    }
+			     
+			     String height = elem.attr("height"); 
+			     if(height!="" && height!=null){
+						System.out.println("HEIGHT ATTRIBUTE VALUE: "+height); 
+			    }
+			     
+			     String title = elem.attr("title"); 
+			     if(title!="" && title!=null){
+						System.out.println("TITLE ATTRIBUTE VALUE: "+title); 
+			    }
+			     String alt = elem.attr("alt"); 
+			     if(alt!="" && alt!=null){
+						System.out.println("ALT ATTRIBUTE VALUE: "+alt); 
+			    }
+			     
+		
 		
 		
 		
@@ -140,7 +173,7 @@ public class RepairTechnique {
 		}
 		return file; 
 	}
-	
-	
-	
 }
+	
+	
+
