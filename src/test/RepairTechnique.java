@@ -1,9 +1,11 @@
 package test;
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.io.UnsupportedEncodingException;
@@ -38,15 +40,15 @@ public class RepairTechnique {
 		String locator=arr[1];
 		start=fail.indexOf(":\"");
 		end=fail.indexOf("\","); 
-		
+		String locator2=null; 
 		method=fail.substring(start, end); 
 		method=method.replace(":\"", ""); 
 		//System.out.println("METHOD==============>"+method); 
 		start=locator.indexOf(":\"");
 		end=locator.indexOf("\"}"); 
 		locator=locator.substring(start, end); 
-		locator=locator.replace(":\"", ""); 
-		locator=locator.replace("\\", ""); 
+		locator2=locator.replace(":\"", ""); 
+		locator=locator2.replace("\\", ""); 
 		
 		
 		System.out.println("LOCATOR==============>"+locator);  
@@ -145,8 +147,9 @@ public class RepairTechnique {
 		}
 		
 		Element Repaired_Element=withAttr.get(0); 
-	    System.out.println("SUGGESTED REPAIR: "+Repaired_Element.cssSelector());
-		
+		String repair= Repaired_Element.cssSelector(); 
+	    System.out.println("SUGGESTED REPAIR: "+repair);
+	    File file= RepairTest( new_file, locator2, repair); 
 		
 //		org.jsoup.nodes.Document docc = Jsoup.connect("http://cse.unl.edu/~mouna/WebApps/AddressBook/addressbookv1.2/").get();
 //    	Element link = docc.select("a").first();
@@ -178,20 +181,52 @@ public class RepairTechnique {
 		
 	
 
-		File file = new File(new_file); 
-		Writer writer = null;
-
-		try {
-		    writer = new BufferedWriter(new OutputStreamWriter(
-		          new FileOutputStream(new_file), "utf-8"));
-		    writer.write("Something");
-		} catch (IOException ex) {
-		  // report
-		} finally {
-		   try {writer.close();} catch (Exception ex) {/*ignore*/}
-		}	
+//		File file = new File(new_file); 
+//		Writer writer = null;
+//
+//		try {
+//		    writer = new BufferedWriter(new OutputStreamWriter(
+//		          new FileOutputStream(new_file), "utf-8"));
+//		    writer.write("Something");
+//		} catch (IOException ex) {
+//		  // report
+//		} finally {
+//		   try {writer.close();} catch (Exception ex) {/*ignore*/}
+//		}	
 		return file; 
 }
 	
+	/***************************************************************************************/
 	
+	private static File RepairTest(String new_file, String locator2, String repair) throws IOException {
+		
+		BufferedReader file = new BufferedReader(new FileReader(new_file));
+		String line;
+		String input = "";
+
+		while ((line = file.readLine()) != null)
+		{
+			input += line + "\n";
+			
+			if (line.contains(locator2)){
+				System.out.println("LINE=======================>"+line); 
+				input=input.replace(locator2, repair); 
+				
+			}
+
+
+		}
+
+
+
+
+
+		FileOutputStream os = new FileOutputStream(new_file);
+		os.write(input.getBytes());
+
+		file.close();
+		os.close();
+		File dest = new File(new_file);
+		return dest; 
+	} 
 }
