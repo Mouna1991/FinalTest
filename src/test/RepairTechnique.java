@@ -10,6 +10,7 @@ import java.io.UnsupportedEncodingException;
 import java.io.Writer;
 
 import org.jsoup.Jsoup;
+import org.jsoup.nodes.Attribute;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.junit.runner.notification.Failure;
@@ -125,11 +126,26 @@ public class RepairTechnique {
 		
 		
 		
-		
+		Elements withAttr = new Elements();
+
 		
 		
 		org.jsoup.nodes.Document doc2 = Jsoup.connect(new_URL).get();
+		for( Element element : doc.getAllElements() )
+		{
+		    for( Attribute attribute : element.attributes() )
+		    {
+		        if( attribute.getValue().equals(source) )
+		        {
+		        	
+		        	//System.out.println("yeessss: "); 
+		            withAttr.add(element);
+		        }
+		    }
+		}
 		
+		Element Repaired_Element=withAttr.get(0); 
+	    System.out.println("SUGGESTED REPAIR: "+Repaired_Element.cssSelector());
 		
 		
 //		org.jsoup.nodes.Document docc = Jsoup.connect("http://cse.unl.edu/~mouna/WebApps/AddressBook/addressbookv1.2/").get();
@@ -159,6 +175,9 @@ public class RepairTechnique {
 		
 		
 		
+		
+	
+
 		File file = new File(new_file); 
 		Writer writer = null;
 
@@ -170,10 +189,9 @@ public class RepairTechnique {
 		  // report
 		} finally {
 		   try {writer.close();} catch (Exception ex) {/*ignore*/}
-		}
+		}	
 		return file; 
-	}
 }
 	
 	
-
+}
