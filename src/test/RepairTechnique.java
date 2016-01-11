@@ -76,7 +76,11 @@ public class RepairTechnique {
 	    	 cssSelectors = doc.select(locator); 
 	    	
 	    }
+<<<<<<< HEAD
 	// NEW login page added starting version 61, version 6.1.4 for LOGIN, PHPAddressBook		   
+=======
+			   
+>>>>>>> b11f1cbd1f66ff081fdd7eabac38f430c788dfa9
 	System.out.println("--------------------PROFILE ESTABLISHEMENT FOR UNLOCATED ELEMENT-----------------"); 
 	   //ID ATTRIBUTE
 					elem=cssSelectors.get(0); 

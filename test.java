@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 package com.example.tests;
+=======
+package test;
+>>>>>>> b11f1cbd1f66ff081fdd7eabac38f430c788dfa9
 
 import java.util.regex.Pattern;
 import java.util.concurrent.TimeUnit;
@@ -47,6 +51,10 @@ public class TestTemp {
     driver.findElement(By.name("phone2")).clear();
     driver.findElement(By.name("phone2")).sendKeys("EDIT");
     driver.findElement(By.name("update")).click();
+<<<<<<< HEAD
+=======
+    
+>>>>>>> b11f1cbd1f66ff081fdd7eabac38f430c788dfa9
   }
 
   @After

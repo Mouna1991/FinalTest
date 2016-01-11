@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
+<<<<<<< HEAD
 	<name>CommitBasedWater</name>
+=======
+	<name>test</name>
+>>>>>>> b11f1cbd1f66ff081fdd7eabac38f430c788dfa9
 	<comment></comment>
 	<projects>
 	</projects>

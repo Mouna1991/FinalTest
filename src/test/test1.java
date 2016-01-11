@@ -19,12 +19,17 @@ public class test1 {
   public void setUp() throws Exception {
     driver = new FirefoxDriver();
     baseUrl = "http://cse.unl.edu/";
+<<<<<<< HEAD
     driver.manage().timeouts().implicitlyWait(4, TimeUnit.SECONDS);
+=======
+    driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+>>>>>>> b11f1cbd1f66ff081fdd7eabac38f430c788dfa9
   }
 
   @Test
   public void testTemp() throws Exception {
 driver.get("http://cse.unl.edu/~mouna/WebApps/AddressBook/addressbookv3.3.2/index.php");
+<<<<<<< HEAD
     driver.findElement(By.linkText("home")).click();
     driver.findElement(By.linkText("add new")).click();
     driver.findElement(By.name("firstname")).clear();
@@ -52,6 +57,31 @@ driver.get("http://cse.unl.edu/~mouna/WebApps/AddressBook/addressbookv3.3.2/inde
     driver.findElement(By.name("phone2")).clear();
     driver.findElement(By.name("phone2")).sendKeys("cse.unl.edu");
     driver.findElement(By.name("submit")).click();
+=======
+    driver.findElement(By.cssSelector("img[alt=\"Edit\"]")).click();
+    driver.findElement(By.name("firstname")).clear();
+    driver.findElement(By.name("firstname")).sendKeys("JamesEDIT");
+    driver.findElement(By.name("lastname")).clear();
+    driver.findElement(By.name("lastname")).sendKeys("PittEDIT");
+    driver.findElement(By.name("address")).clear();
+    driver.findElement(By.name("address")).sendKeys("44545 R street EDIT");
+    driver.findElement(By.name("home")).clear();
+    driver.findElement(By.name("home")).sendKeys("454545455 8989");
+    driver.findElement(By.name("mobile")).clear();
+    driver.findElement(By.name("mobile")).sendKeys("454554555 2398");
+    driver.findElement(By.name("work")).clear();
+    driver.findElement(By.name("work")).sendKeys("455455555 32323");
+    driver.findElement(By.name("email")).clear();
+    driver.findElement(By.name("email")).sendKeys("j.pitt@gmail.com EDIT");
+    driver.findElement(By.name("email2")).clear();
+    driver.findElement(By.name("email2")).sendKeys("jamespitt@hotmail.com EDIT");
+    driver.findElement(By.name("address2")).clear();
+    driver.findElement(By.name("address2")).sendKeys("EDIT");
+    driver.findElement(By.name("phone2")).clear();
+    driver.findElement(By.name("phone2")).sendKeys("EDIT");
+    driver.findElement(By.name("update")).click();
+    
+>>>>>>> b11f1cbd1f66ff081fdd7eabac38f430c788dfa9
   }
 
   @After
